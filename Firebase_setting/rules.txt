@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "locations": {
+      "$user_id": {
+        ".read": true,
+        ".write": true,//"auth.uid != null && $user_id === auth.uid",
+        ".validate": 
+            "!newData.child('track_name').exists()",
+        ".indexOn": ["start_ts"]
+      }
+    },
+    "tracks": {
+      ".read": true,
+      ".write": true,
+      "$track_id": {
+        ".read": true,
+        ".write": true,
+        //".validate": "!data.child('coordinates').exists() || (newData.hasChildren(['lat','lng'])
+        //  && newData.child('lat').val().matches(/^(\-?(([1][0-8])|([0-9]))[0-9])(\.[0-9]{8}+)?$/) 
+        //  && newData.child('lng').val().matches(/^(\-?(([1][0-8])|([0-9]))[0-9])(\.[0-9]{8}+)?$/))"
+      }
+    },
+  }
+}
